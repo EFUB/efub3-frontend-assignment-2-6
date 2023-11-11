@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef } from "react";
 import styles from "./RecordWrite.module.css";
 
 export default function RecordWrite({ itemList, setItemList }) {
