@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 15px;
+}
+
+.quiz {
+  border: 2px solid rgb(26, 26, 60);
+  padding: 7px 2px;
+  font-size: 30px;
+  text-align: center;
+  color: #16335b;
+  font-weight: 700;
+}
+
+.box {
+  background-color: #bbd7ff;
+}
