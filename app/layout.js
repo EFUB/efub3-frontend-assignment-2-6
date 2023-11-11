@@ -14,7 +14,7 @@ const notoSansKr = Noto_Sans_KR({
 
 export const metadata = {
   title: "Record",
-  description: "일상을 사진과 함께 기록하자",
+  description: "사진과 일상을 기록해 보세요",
 };
 
 export default function RootLayout({ children }) {

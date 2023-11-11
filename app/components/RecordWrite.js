@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import styles from "./RecordWrite.module.css";
 
 export default function RecordWrite({ itemList, setItemList }) {
   const inputRef = useRef(null);
   const [text, setText] = useState("");
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("");
 
   const MAX_STORAGE_SIZE_MB = 5;
 
@@ -13,6 +15,8 @@ export default function RecordWrite({ itemList, setItemList }) {
     if (!e.target.files) {
       return;
     }
+
+    setFileName(e.target.files[0].name);
 
     // FileReader 객체 생성
     const reader = new FileReader();
@@ -52,7 +56,7 @@ export default function RecordWrite({ itemList, setItemList }) {
         alert(`로컬 스토리지 크기 초과! (최대: ${MAX_STORAGE_SIZE_MB}MB)`);
         setText("");
         setFile(null);
-        inputRef.current.value = "";
+        setFileName("");
         return;
       }
 
@@ -60,7 +64,7 @@ export default function RecordWrite({ itemList, setItemList }) {
       setItemList([...itemList, newItem]);
       setText("");
       setFile(null);
-      inputRef.current.value = "";
+      setFileName("");
       localStorage.setItem("itemList", JSON.stringify([...itemList, newItem]));
     }
   }
@@ -76,21 +80,34 @@ export default function RecordWrite({ itemList, setItemList }) {
   }
 
   return (
-    <>
-      <input
-        type="file"
-        id="file"
-        accept="image/*"
-        ref={inputRef}
-        onChange={handleUploadImage}
-      />
+    <div className={styles.container}>
+      <div className={styles.inputContainer}>
+        <label for="file">
+          <div className={styles.innerInputContainer}>
+            <div className={styles.btn}>파일 선택</div>
+            {fileName ? (
+              <p className={styles.fileName}>{fileName}</p>
+            ) : (
+              <p className={styles.fileName}></p>
+            )}
+          </div>
+        </label>
+        <input
+          type="file"
+          id="file"
+          className={styles.inputFile}
+          accept="image/*"
+          ref={inputRef}
+          onChange={handleUploadImage}
+        />
+      </div>
       <input
         type="text"
-        id="input-text"
+        className={styles.text}
         onChange={handleTextChange}
         value={text}
       />
       <button onClick={handleSubmitClick}>작성하기</button>
-    </>
+    </div>
   );
 }

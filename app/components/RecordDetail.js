@@ -3,6 +3,7 @@
 import { useState, useLayoutEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import styles from "./RecordDetail.module.css";
 
 export default function RecordDetail({ id }) {
   const router = useRouter();
@@ -26,26 +27,20 @@ export default function RecordDetail({ id }) {
   };
 
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <div className={styles.container}>
       <div>
         <button onClick={() => router.push("/")}>홈으로</button>
         <button onClick={handleDeleteClick}>삭제</button>
       </div>
-      <p>{selectedItem?.text}</p>
-      <div style={{ position: "relative", width: "900px", height: "600px" }}>
-        {selectedItem?.image && (
-          <Image
-            src={selectedItem.image}
-            alt="pic"
-            sizes="500px"
-            fill
-            style={{
-              objectFit: "contain",
-            }}
-          />
-        )}
+      <p className={styles.text}>{selectedItem.text}</p>
+      <div className={styles.imgContainer}>
+        <Image
+          src={selectedItem.image}
+          alt="pic"
+          sizes="500px"
+          fill
+          className={styles.img}
+        />
       </div>
     </div>
   );
