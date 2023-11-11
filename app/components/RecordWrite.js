@@ -82,7 +82,7 @@ export default function RecordWrite({ itemList, setItemList }) {
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
-        <label for="file">
+        <label htmlFor="file">
           <div className={styles.innerInputContainer}>
             <div className={styles.btn}>파일 선택</div>
             {fileName ? (
