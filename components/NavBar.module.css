@@ -1,0 +1,6 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  background-image: url("../public/bg_header.gif");
+  height: 90px;
+}

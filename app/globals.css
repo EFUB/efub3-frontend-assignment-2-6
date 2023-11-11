@@ -1,0 +1,17 @@
+:root {
+  --pink: #eb6da4;
+  --blue: #044ca3;
+  --white: #ffffff;
+}
+
+html {
+  background-color: #ffffff;
+
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+}
