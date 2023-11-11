@@ -17,7 +17,6 @@ export default function RecordDetail({ id }) {
     if (record) {
       setSelectedItem(record);
     }
-    console.log(id);
   }, [id]);
 
   const handleDeleteClick = () => {
