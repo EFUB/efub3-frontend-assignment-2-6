@@ -67,12 +67,12 @@ export default function WishCreate() {
         onChange={handleChange}
       ></input>
       <div className={styles.label}>Reason</div>
-      <input
+      <textarea
         name="content"
         className={styles.inputbox}
         style={{ height: '120px' }}
         onChange={handleChange}
-      ></input>
+      ></textarea>
       <button className={styles.bluebutton} onClick={onSubmit}>
         Add
       </button>
