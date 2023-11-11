@@ -34,13 +34,15 @@ export default function RecordDetail({ id }) {
       </div>
       <p className={styles.text}>{selectedItem.text}</p>
       <div className={styles.imgContainer}>
-        <Image
-          src={selectedItem.image}
-          alt="pic"
-          sizes="500px"
-          fill
-          className={styles.img}
-        />
+        {selectedItem.image && (
+          <Image
+            src={selectedItem.image}
+            alt="pic"
+            sizes="500px"
+            fill
+            className={styles.img}
+          />
+        )}
       </div>
     </div>
   );
