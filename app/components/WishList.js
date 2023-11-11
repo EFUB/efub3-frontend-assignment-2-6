@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from '../page.module.css';
 import Image from 'next/image';
@@ -8,18 +8,17 @@ import WishItem from './WishItem';
 import addButton from '../../public/add_button.png';
 
 export default function WishList() {
-  const [items, setItem] = useState([
-    {
-      id: 0,
-      title: 'hellodddddddddddddddddddddd',
-      content:
-        '어쩌고 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
-      category: '문구류',
-      price: 1230000,
-      url: 'https://www.montblanc.com/en-us/fountain-pens_cod43769801098290633.html',
-    },
-  ]);
+  const [items, setItems] = useState([]);
   const router = useRouter();
+
+  useEffect(() => {
+    const localData = localStorage.getItem('wishlist');
+    if (localData) {
+      setItems(JSON.parse(localData));
+    } else {
+      localStorage.setItem('wishlist', JSON.stringify(items));
+    }
+  }, []);
 
   return (
     <div>
@@ -31,14 +30,18 @@ export default function WishList() {
                 router.push(`/detail/${item.id}`);
               }}
             >
-              <WishItem key={item.key} {...item} />
+              <WishItem key={item.id} {...item} />
             </div>
           );
         })}
       </div>
-      <div onClick={() => router.push('/create')}>
+      <button
+        onClick={() => {
+          router.push(`/create`);
+        }}
+      >
         <Image className={styles.addbutton} src={addButton} />
-      </div>
+      </button>
     </div>
   );
 }
