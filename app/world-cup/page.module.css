@@ -1,0 +1,38 @@
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
+
+  /* 헤더 제외 높이 */
+  height: calc(100vh - 90px);
+}
+
+.subDiv {
+  display: flex;
+  align-items: center;
+
+  margin-top: 12px;
+
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.status {
+  background: var(--pink);
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: var(--white);
+
+  font-size: 20px;
+  font-weight: 600;
+
+  margin: 12px 0;
+}
